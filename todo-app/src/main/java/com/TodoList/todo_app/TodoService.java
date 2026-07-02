@@ -18,7 +18,7 @@ public class TodoService {
 
     public Todo getTodoById(Long id) {
         return todoRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Todo not found with id: " + id));
+                .orElseThrow(() -> new TodoNotFoundException("Todo not found with id: " + id));
     }
 
 
