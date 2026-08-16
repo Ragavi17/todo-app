@@ -6,19 +6,21 @@
     <title>Todo</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
 <main class="board">
     <header class="board__header">
         <h1>Today's list</h1>
-        <p class="board__count"><span id="remaining-count">2</span> left</p>
+        <p class="board__count"><span id="remaining-count">0</span> left</p>
     </header>
 
-    <form class="add-form">
-        <input type="text" class="add-form__input" placeholder="Add a task…" aria-label="New task">
-        <select class="add-form__select" aria-label="Priority">
+    <form id="add-form" class="add-form">
+        <input type="text" id="title-input" class="add-form__input" placeholder="Add a task…" aria-label="New task" required minlength="3" maxlength="100">
+        <input type="text" id="category-input" class="add-form__input add-form__input--small" placeholder="Category" aria-label="Category" required>
+        <input type="date" id="due-date-input" class="add-form__input add-form__input--small" aria-label="Due date" required>
+        <select id="priority-input" class="add-form__select" aria-label="Priority">
             <option value="LOW">Low</option>
             <option value="MEDIUM">Medium</option>
             <option value="HIGH">High</option>
@@ -26,55 +28,11 @@
         <button type="submit" class="add-form__button">Add</button>
     </form>
 
-    <ul class="todo-list">
-        <li class="todo-item">
-            <div class="todo-item__main">
-                <label class="todo-item__label">
-                    <input type="checkbox" class="todo-item__checkbox">
-                    <span class="todo-item__text">Set up the Spring Boot backend</span>
-                </label>
-                <button class="todo-item__delete" aria-label="Delete task">&times;</button>
-            </div>
-            <div class="todo-item__meta">
-                <span class="badge badge--high">High</span>
-                <span class="tag">Backend</span>
-                <span class="due-date">Due Aug 20</span>
-            </div>
-        </li>
+    <ul id="todo-list" class="todo-list"></ul>
 
-        <li class="todo-item">
-            <div class="todo-item__main">
-                <label class="todo-item__label">
-                    <input type="checkbox" class="todo-item__checkbox">
-                    <span class="todo-item__text">Build the HTML + CSS for the frontend</span>
-                </label>
-                <button class="todo-item__delete" aria-label="Delete task">&times;</button>
-            </div>
-            <div class="todo-item__meta">
-                <span class="badge badge--medium">Medium</span>
-                <span class="tag">Frontend</span>
-                <span class="due-date">Due Aug 22</span>
-            </div>
-        </li>
-
-        <li class="todo-item todo-item--done">
-            <div class="todo-item__main">
-                <label class="todo-item__label">
-                    <input type="checkbox" class="todo-item__checkbox" checked>
-                    <span class="todo-item__text">Create the frontend git branch</span>
-                </label>
-                <button class="todo-item__delete" aria-label="Delete task">&times;</button>
-            </div>
-            <div class="todo-item__meta">
-                <span class="badge badge--low">Low</span>
-                <span class="tag">Setup</span>
-                <span class="due-date">Due Aug 15</span>
-            </div>
-        </li>
-    </ul>
-
-    <p class="empty-state" hidden>Nothing here yet. Add your first task above.</p>
+    <p id="empty-state" class="empty-state" hidden>Nothing here yet. Add your first task above.</p>
 </main>
 
+<script src="js/app.js"></script>
 </body>
 </html>

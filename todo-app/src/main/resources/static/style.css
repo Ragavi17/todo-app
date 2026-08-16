@@ -27,7 +27,7 @@ body {
   justify-content: center;
   padding: 48px 20px;
   background-image:
-    linear-gradient(rgba(250, 248, 243, 0.55), rgba(250, 248, 243, 0.75)),
+    linear-gradient(rgba(250, 248, 243, 0.15), rgba(250, 248, 243, 0.35)),
     url("../Images/background.jpg");
   background-size: cover;
   background-position: center;
