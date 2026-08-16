@@ -32,7 +32,6 @@ public class Todo {
     private Priority priority;
 
     @NotNull(message="Due date cannot be null!")
-    @Future(message="Due date must be a future date!")
     @Column(name = "due_date")
     private LocalDate dueDate;
 

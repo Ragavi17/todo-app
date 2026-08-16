@@ -23,6 +23,9 @@ public class TodoService {
 
 
     public Todo createTodo(Todo todo) {
+        if (todo.getDueDate().isBefore(java.time.LocalDate.now())) {
+            throw new IllegalArgumentException("Due date must be a future date!");
+        }
         return todoRepository.save(todo);
     }
 

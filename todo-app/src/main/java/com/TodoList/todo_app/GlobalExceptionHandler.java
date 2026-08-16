@@ -15,17 +15,17 @@ import java.util.Map;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
-   @ExceptionHandler(TodoNotFoundException.class)
+    @ExceptionHandler(TodoNotFoundException.class)
     public ResponseEntity<Map<String, Object>> handleTodoBotFound(TodoNotFoundException ex)
-   {
-       Map<String,Object> errorResponse=new HashMap<>();
-       errorResponse.put("timestamp", LocalDateTime.now());
-       errorResponse.put("status", HttpStatus.NOT_FOUND.value());
-       errorResponse.put("error","Not Found");
-       errorResponse.put("message",ex.getMessage());
+    {
+        Map<String,Object> errorResponse=new HashMap<>();
+        errorResponse.put("timestamp", LocalDateTime.now());
+        errorResponse.put("status", HttpStatus.NOT_FOUND.value());
+        errorResponse.put("error","Not Found");
+        errorResponse.put("message",ex.getMessage());
 
-       return new ResponseEntity<>(errorResponse,HttpStatus.NOT_FOUND);
-   }
+        return new ResponseEntity<>(errorResponse,HttpStatus.NOT_FOUND);
+    }
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<Map<String, Object>> handleValidationErrors(MethodArgumentNotValidException ex) {
         Map<String, Object> errorResponse = new HashMap<>();
@@ -42,5 +42,16 @@ public class GlobalExceptionHandler {
         errorResponse.put("messages", fieldErrors);
 
         return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
-}
+    }
+
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity<Map<String, Object>> handleIllegalArgument(IllegalArgumentException ex) {
+        Map<String, Object> errorResponse = new HashMap<>();
+        errorResponse.put("timestamp", LocalDateTime.now());
+        errorResponse.put("status", HttpStatus.BAD_REQUEST.value());
+        errorResponse.put("error", "Validation Failed");
+        errorResponse.put("message", ex.getMessage());
+
+        return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
+    }
 }
